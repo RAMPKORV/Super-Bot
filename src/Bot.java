@@ -7,7 +7,7 @@ import org.jibble.pircbot.PircBot;
 public abstract class Bot extends PircBot {
     protected String mServer = "irc.esper.net";
     protected String mChannel = "#monsquaz";
-    protected String mNick = "AINOR";
+    protected String mNick = "ROTADERP";
     protected Discussion currentDiscussion = null;
     
     public Bot() {
@@ -30,13 +30,12 @@ public abstract class Bot extends PircBot {
     
     @Override
     protected void onMessage(String channel, String sender, String login, String hostname, String message) {
-        handleSentence(sender, new Sentence(message));
+        handleSentence(sender, new Sentence(message.toLowerCase()));
     }
 
     
     public final void handleSentence(String sender, Sentence s) {
         String subject = null;
-        s = new Sentence(s.getText().toLowerCase());
         String[] sList = s.getText().split("[\\.\\?\\!\\(\\)\\:]");
         List<Sentence> dummy = new ArrayList<Sentence>();
         boolean sent = false;
